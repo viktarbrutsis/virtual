@@ -48,6 +48,13 @@ function createButton(array) {
       button.classList.add('button');
       button.innerText = `${array[i].value}`;
       button.id = `${array[i].code}`;
+      if (button.innerText === 'delete' || button.innerText === 'Tab') {
+        console.log(button.innerText);
+        button.classList.add('button-tab');
+      }
+      else if (button.innerText === 'caps Lock' || button.innerText === 'return') {
+        button.classList.add('button-caps');
+      }
       buttonArea.append(button);
    }
 
@@ -59,6 +66,12 @@ function createCapsKeyboard(array) {
     button.classList.add('button');
     button.innerText = `${array[i].capsLocked}`;
     button.id = `${array[i].code}`;
+    if (button.innerText === 'delete' || button.innerText === 'Tab') {
+      button.classList.add('button-tab');
+    }
+    else if (button.innerText === 'caps Lock' || button.innerText === 'return') {
+      button.classList.add('button-caps');
+    }
     buttonArea.append(button);
  }
 }
