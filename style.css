@@ -29,7 +29,7 @@ body {
 }
 .button {
    margin: 0 auto;
-   min-width: 60px;
+   min-width: 61px;
    height: 60px;
    padding: 0 5px;
    border-radius: 10px;
@@ -39,7 +39,7 @@ body {
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 18px;
+   font-size: 16px;
 }
 .button-tab {
    min-width: 110px;
@@ -48,7 +48,13 @@ body {
    min-width: 140px;
 }
 .button-shift {
-   min-width: 140px;
+   min-width: 170px;
+}
+.button-command {
+   min-width: 85px;
+}
+.button-space {
+   min-width: 380px;
 }
 .button:hover {
    cursor: pointer;
@@ -59,6 +65,7 @@ body {
    display: flex;
    flex-wrap: wrap;
    gap: 5px;
+   row-gap: 10px;
 }
 .button-pressed {
    background-color: burlywood;

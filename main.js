@@ -38,7 +38,7 @@ subtitleTwo.classList.add('subtitle');
 
 
 subtitleOne.innerText = 'The keyboard is created in Mac system';
-subtitleTwo.innerText = 'To change the language press: Space + м';
+subtitleTwo.innerText = 'To change the language press: Space + v';
 
 body.append(subtitleOne, subtitleTwo);
 
@@ -54,6 +54,15 @@ function createButton(array) {
       }
       else if (button.innerText === 'caps Lock' || button.innerText === 'return') {
         button.classList.add('button-caps');
+      }
+      else if (button.innerText === 'shift') {
+        button.classList.add('button-shift');
+      }
+      else if (button.innerText === 'command') {
+        button.classList.add('button-command');
+      }
+      else if (button.innerText === 'space') {
+        button.classList.add('button-space');
       }
       buttonArea.append(button);
    }
@@ -71,6 +80,15 @@ function createCapsKeyboard(array) {
     }
     else if (button.innerText === 'caps Lock' || button.innerText === 'return') {
       button.classList.add('button-caps');
+    }
+    else if (button.innerText === 'shift') {
+      button.classList.add('button-shift');
+    }
+    else if (button.innerText === 'command') {
+      button.classList.add('button-command');
+    }
+    else if (button.innerText === 'space') {
+      button.classList.add('button-space');
     }
     buttonArea.append(button);
  }
@@ -188,6 +206,23 @@ document.addEventListener('click', (e) => {
     }
   }
 
+});
+
+//if shift pressed
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Space') flag = true;
+  if(language === 'english' && event.code == 'KeyV' && flag) {
+    language = 'russian';
+    buttonArea.innerHTML = ``;
+    init();
+    flag = false;
+  }
+  if(language === 'russian' && event.code == 'KeyV' && flag) {
+    language = 'english';
+    buttonArea.innerHTML = ``;
+    init();
+    flag = false;
+  }
 });
 
 
