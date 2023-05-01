@@ -38,7 +38,7 @@ subtitleTwo.classList.add('subtitle');
 
 
 subtitleOne.innerText = 'The keyboard is created in Mac system';
-subtitleTwo.innerText = 'To change the language press: Space + м';
+subtitleTwo.innerText = 'To change the language press: Space + v';
 
 body.append(subtitleOne, subtitleTwo);
 
@@ -48,6 +48,22 @@ function createButton(array) {
       button.classList.add('button');
       button.innerText = `${array[i].value}`;
       button.id = `${array[i].code}`;
+      if (button.innerText === 'delete' || button.innerText === 'Tab') {
+        console.log(button.innerText);
+        button.classList.add('button-tab');
+      }
+      else if (button.innerText === 'caps Lock' || button.innerText === 'return') {
+        button.classList.add('button-caps');
+      }
+      else if (button.innerText === 'shift') {
+        button.classList.add('button-shift');
+      }
+      else if (button.innerText === 'command') {
+        button.classList.add('button-command');
+      }
+      else if (button.innerText === 'space') {
+        button.classList.add('button-space');
+      }
       buttonArea.append(button);
    }
 
@@ -59,6 +75,21 @@ function createCapsKeyboard(array) {
     button.classList.add('button');
     button.innerText = `${array[i].capsLocked}`;
     button.id = `${array[i].code}`;
+    if (button.innerText === 'delete' || button.innerText === 'Tab') {
+      button.classList.add('button-tab');
+    }
+    else if (button.innerText === 'caps Lock' || button.innerText === 'return') {
+      button.classList.add('button-caps');
+    }
+    else if (button.innerText === 'shift') {
+      button.classList.add('button-shift');
+    }
+    else if (button.innerText === 'command') {
+      button.classList.add('button-command');
+    }
+    else if (button.innerText === 'space') {
+      button.classList.add('button-space');
+    }
     buttonArea.append(button);
  }
 }
@@ -138,13 +169,18 @@ document.addEventListener('keydown', (event) => {
 
 allButtons.forEach(elem => {
   elem.addEventListener('click', (e) => {
+    console.log(e.target.id);
     allButtons.forEach(button => {
       button.classList.remove('button-pressed');
     })
-    console.log(e);
     elem.classList.add('button-pressed');
-    console.log(elem.innerText);
-    string += `${e.target.innerText}`;
+    if (e.target.id === 'Space') {
+      string += ` `;
+    } else if (e.target.id === 'Tab') {
+      string += `    `;
+    } else {
+      string += `${e.target.innerText}`;
+    }
     textArea.innerText = string;
     // textArea.focus();
   });
@@ -175,6 +211,26 @@ document.addEventListener('click', (e) => {
     }
   }
 
+});
+
+//if shift pressed
+let shiftGlag = false;
+
+document.addEventListener('keydown', (event) => {
+  console.log(event.code);
+  if (event.code === 'ShiftLeft' || event.code === 'ShiftRight');
+  // if(language === 'english' && event.code == 'KeyV' && flag) {
+  //   language = 'russian';
+  //   buttonArea.innerHTML = ``;
+  //   init();
+  //   flag = false;
+  // }
+  // if(language === 'russian' && event.code == 'KeyV' && flag) {
+  //   language = 'english';
+  //   buttonArea.innerHTML = ``;
+  //   init();
+  //   flag = false;
+  // }
 });
 
 
