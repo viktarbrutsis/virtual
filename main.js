@@ -169,13 +169,18 @@ document.addEventListener('keydown', (event) => {
 
 allButtons.forEach(elem => {
   elem.addEventListener('click', (e) => {
+    console.log(e.target.id);
     allButtons.forEach(button => {
       button.classList.remove('button-pressed');
     })
-    console.log(e);
     elem.classList.add('button-pressed');
-    console.log(elem.innerText);
-    string += `${e.target.innerText}`;
+    if (e.target.id === 'Space') {
+      string += ` `;
+    } else if (e.target.id === 'Tab') {
+      string += `    `;
+    } else {
+      string += `${e.target.innerText}`;
+    }
     textArea.innerText = string;
     // textArea.focus();
   });
@@ -209,20 +214,23 @@ document.addEventListener('click', (e) => {
 });
 
 //if shift pressed
+let shiftGlag = false;
+
 document.addEventListener('keydown', (event) => {
-  if (event.code === 'Space') flag = true;
-  if(language === 'english' && event.code == 'KeyV' && flag) {
-    language = 'russian';
-    buttonArea.innerHTML = ``;
-    init();
-    flag = false;
-  }
-  if(language === 'russian' && event.code == 'KeyV' && flag) {
-    language = 'english';
-    buttonArea.innerHTML = ``;
-    init();
-    flag = false;
-  }
+  console.log(event.code);
+  if (event.code === 'ShiftLeft' || event.code === 'ShiftRight');
+  // if(language === 'english' && event.code == 'KeyV' && flag) {
+  //   language = 'russian';
+  //   buttonArea.innerHTML = ``;
+  //   init();
+  //   flag = false;
+  // }
+  // if(language === 'russian' && event.code == 'KeyV' && flag) {
+  //   language = 'english';
+  //   buttonArea.innerHTML = ``;
+  //   init();
+  //   flag = false;
+  // }
 });
 
 
